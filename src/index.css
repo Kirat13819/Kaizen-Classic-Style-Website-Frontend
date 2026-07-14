@@ -1,0 +1,62 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "EB Garamond", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "JetBrains Mono", ui-monospace, monospace;
+}
+
+body {
+  font-family: "EB Garamond", "Cormorant Garamond", Georgia, serif;
+  background-color: #F0EAD6;
+  color: #22201D;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+/* Custom CSS helper animations for transitions */
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-slide-left {
+  animation: slideLeft 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom decorative zig-zag receipt line */
+.bg-repeating-zigzag {
+  background-image: linear-gradient(-45deg, #F0EAD6 4px, transparent 0), linear-gradient(45deg, #F0EAD6 4px, transparent 0);
+  background-position: left top;
+  background-repeat: repeat-x;
+  background-size: 8px 8px;
+}

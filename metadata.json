@@ -1,0 +1,6 @@
+{
+  "name": "kaizeñ",
+  "description": "A premium sports and community club with one multi-purpose turf, pickleball courts, and a luxury cafe.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
