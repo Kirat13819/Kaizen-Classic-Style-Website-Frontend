@@ -4,15 +4,21 @@
  */
 
 import { Product, MenuCategory, Review, Sponsor, BookingSlot } from './types';
+import heroLogo from './assets/images/kaizen_hero_logo_1783601017759.jpg';
+import turf from './assets/images/kaizen_turf_1783601042482.jpg';
+import pickleball from './assets/images/kaizen_pickleball_1783601063249.jpg';
+import cafe from './assets/images/kaizen_cafe_1783601085605.jpg';
+import polo from './assets/images/kaizen_polo_1783601110663.jpg';
+import cover from './assets/images/kaizen_cover_1783601132238.jpg';
 
 // Asset paths based on generated images
 export const IMAGES = {
-  heroLogo: '/src/assets/images/kaizen_hero_logo_1783601017759.jpg',
-  turf: '/src/assets/images/kaizen_turf_1783601042482.jpg',
-  pickleball: '/src/assets/images/kaizen_pickleball_1783601063249.jpg',
-  cafe: '/src/assets/images/kaizen_cafe_1783601085605.jpg',
-  polo: '/src/assets/images/kaizen_polo_1783601110663.jpg',
-  cover: '/src/assets/images/kaizen_cover_1783601132238.jpg',
+  heroLogo,
+  turf,
+  pickleball,
+  cafe,
+  polo,
+  cover,
 };
 
 export const SPONSORS: Sponsor[] = [
