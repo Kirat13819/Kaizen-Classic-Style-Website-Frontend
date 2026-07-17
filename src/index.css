@@ -45,6 +45,35 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@keyframes sweepReveal {
+  0% {
+    transform: translateX(120%);
+  }
+  100% {
+    transform: translateX(-120%);
+  }
+}
+
+@keyframes softFade {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loadingPulse {
+  0%, 100% {
+    transform: translateX(-110%);
+  }
+  50% {
+    transform: translateX(110%);
+  }
+}
+
 @keyframes reviewMarquee {
   0% {
     transform: translateX(0);
@@ -60,6 +89,22 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-fade-in {
   animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.page-transition-curtain {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(243, 232, 210, 0.18) 12%, rgba(243, 232, 210, 0.42) 50%, rgba(243, 232, 210, 0.18) 88%, transparent 100%);
+  transform: translateX(120%);
+  animation: sweepReveal 1.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-fade-overlay {
+  animation: softFade 0.45s ease-out forwards;
+}
+
+.loading-bar {
+  animation: loadingPulse 1.2s ease-in-out infinite;
 }
 
 .review-marquee-track {
