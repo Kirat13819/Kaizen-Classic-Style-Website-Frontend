@@ -3,15 +3,71 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight, Clock, MapPin, Phone } from 'lucide-react';
-import { Page } from '../types';
+import { Page, Sponsor } from '../types';
 import { IMAGES, SPONSORS, REVIEWS } from '../data';
 import { motion } from 'motion/react';
 import Logo from './Logo';
 
 interface HomeViewProps {
   setCurrentPage: (page: Page) => void;
+}
+
+function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
+  const [isHovered, setIsHovered] = useState(false);
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+
+  const handleMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
+    const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
+    setTilt({ x: y * 6, y: -x * 6 });
+  };
+
+  const handleLeave = () => {
+    setIsHovered(false);
+    setTilt({ x: 0, y: 0 });
+  };
+
+  return (
+    <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      className="group relative flex flex-col p-6 bg-[#F0EAD6] border border-[#B08D57]/20 overflow-hidden cursor-pointer"
+      style={{
+        transform: isHovered
+          ? `perspective(1200px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(-14px) scale(1.03)`
+          : 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)',
+        boxShadow: isHovered
+          ? '0 24px 48px rgba(43, 36, 22, 0.16)'
+          : '0 10px 24px rgba(43, 36, 22, 0.06)',
+        backgroundColor: isHovered ? '#F7F0E3' : '#F0EAD6',
+        borderColor: isHovered ? '#6B4A34' : 'rgba(176, 141, 87, 0.2)',
+        transition: 'transform 250ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 250ms ease, background-color 250ms ease, border-color 250ms ease'
+      }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-[#B08D57]/12 via-transparent to-[#6B4A34]/12 opacity-0 transition-opacity duration-300" style={{ opacity: isHovered ? 1 : 0 }}></div>
+      <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#B08D57]/0 via-[#B08D57]/80 to-[#B08D57]/0 transition-opacity duration-300" style={{ opacity: isHovered ? 1 : 0 }}></div>
+      <div className="relative h-16 w-full flex items-center justify-center border-b border-[#B08D57]/15 pb-4 mb-4">
+        <span
+          className="text-base tracking-[0.25em] font-bold text-[#2C3B2E] opacity-75 transition-all duration-300 font-serif"
+          style={{
+            opacity: isHovered ? 1 : 0.75,
+            color: isHovered ? '#6B4A34' : '#2C3B2E',
+            letterSpacing: isHovered ? '0.35em' : '0.25em',
+            transform: isHovered ? 'scale(1.04)' : 'scale(1)'
+          }}
+        >
+          {sponsor.logoText}
+        </span>
+      </div>
+      <p className="relative text-center text-xs font-serif leading-relaxed transition-colors duration-300" style={{ color: isHovered ? '#22201D' : 'rgba(34, 32, 29, 0.7)' }}>
+        {sponsor.description}
+      </p>
+    </div>
+  );
 }
 
 export default function HomeView({ setCurrentPage }: HomeViewProps) {
@@ -207,23 +263,7 @@ export default function HomeView({ setCurrentPage }: HomeViewProps) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
             {SPONSORS.map((sponsor) => (
-              <div
-                key={sponsor.name}
-                className="group relative flex flex-col p-6 bg-[#F0EAD6] border border-[#B08D57]/20 hover:border-[#6B4A34] hover:-translate-y-3 hover:shadow-[0_20px_42px_rgba(43,36,22,0.16)] hover:bg-[#F7F0E3] transition-all duration-400 overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#B08D57]/10 via-transparent to-[#6B4A34]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
-                <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#B08D57]/0 via-[#B08D57]/80 to-[#B08D57]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
-                {/* Fixed Size Plaque For Monochrome Logo */}
-                <div className="relative h-16 w-full flex items-center justify-center border-b border-[#B08D57]/15 pb-4 mb-4">
-                  <span className="text-base tracking-[0.25em] font-bold text-[#2C3B2E] opacity-75 group-hover:opacity-100 group-hover:text-[#6B4A34] group-hover:tracking-[0.35em] group-hover:scale-105 transition-all duration-400 font-serif">
-                    {sponsor.logoText}
-                  </span>
-                </div>
-                {/* One line description */}
-                <p className="relative text-center text-xs font-serif text-[#22201D]/70 group-hover:text-[#22201D] transition-colors duration-400 leading-relaxed">
-                  {sponsor.description}
-                </p>
-              </div>
+              <SponsorCard key={sponsor.name} sponsor={sponsor} />
             ))}
           </div>
         </div>
