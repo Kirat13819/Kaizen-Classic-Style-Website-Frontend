@@ -15,6 +15,8 @@ interface HomeViewProps {
 }
 
 export default function HomeView({ setCurrentPage }: HomeViewProps) {
+  const marqueeReviews = [...REVIEWS, ...REVIEWS];
+
   return (
     <div id="home-view" className="bg-[#F0EAD6] text-[#22201D] font-serif overflow-x-hidden pt-0">
       
@@ -97,15 +99,15 @@ export default function HomeView({ setCurrentPage }: HomeViewProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* The Turf Card */}
-            <div className="flex flex-col h-full bg-[#F0EAD6] border border-[#B08D57]/20 overflow-hidden shadow-sm hover:shadow-md transition-all group">
+            <div className="flex flex-col h-full bg-[#F0EAD6] border border-[#B08D57]/20 overflow-hidden shadow-sm hover:shadow-[0_18px_40px_rgba(43,36,22,0.15)] hover:-translate-y-2 transition-all duration-500 group">
               <div className="relative aspect-[4/3] overflow-hidden border-b border-[#B08D57]/15">
                 <img
                   src={IMAGES.turf}
                   alt="The Turf at Kaizen"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-105 group-hover:contrast-[1.05]"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-[#2C3B2E]/5"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2C3B2E]/20 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               <div className="p-8 flex flex-col flex-grow space-y-4">
                 <h4 className="text-xl text-[#2C3B2E] font-medium tracking-wide">The Turf</h4>
@@ -126,15 +128,15 @@ export default function HomeView({ setCurrentPage }: HomeViewProps) {
             </div>
 
             {/* Pickleball Courts Card */}
-            <div className="flex flex-col h-full bg-[#F0EAD6] border border-[#B08D57]/20 overflow-hidden shadow-sm hover:shadow-md transition-all group">
+            <div className="flex flex-col h-full bg-[#F0EAD6] border border-[#B08D57]/20 overflow-hidden shadow-sm hover:shadow-[0_18px_40px_rgba(43,36,22,0.15)] hover:-translate-y-2 transition-all duration-500 group">
               <div className="relative aspect-[4/3] overflow-hidden border-b border-[#B08D57]/15">
                 <img
                   src={IMAGES.pickleball}
                   alt="Pickleball Courts at Kaizen"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-105 group-hover:contrast-[1.05]"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-[#2C3B2E]/5"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2C3B2E]/20 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               <div className="p-8 flex flex-col flex-grow space-y-4">
                 <h4 className="text-xl text-[#2C3B2E] font-medium tracking-wide">Pickleball Courts</h4>
@@ -155,15 +157,15 @@ export default function HomeView({ setCurrentPage }: HomeViewProps) {
             </div>
 
             {/* The Cafe Card */}
-            <div className="flex flex-col h-full bg-[#F0EAD6] border border-[#B08D57]/20 overflow-hidden shadow-sm hover:shadow-md transition-all group">
+            <div className="flex flex-col h-full bg-[#F0EAD6] border border-[#B08D57]/20 overflow-hidden shadow-sm hover:shadow-[0_18px_40px_rgba(43,36,22,0.15)] hover:-translate-y-2 transition-all duration-500 group">
               <div className="relative aspect-[4/3] overflow-hidden border-b border-[#B08D57]/15">
                 <img
                   src={IMAGES.cafe}
                   alt="The Cafe at Kaizen"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-105 group-hover:contrast-[1.05]"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-[#2C3B2E]/5"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2C3B2E]/20 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
               <div className="p-8 flex flex-col flex-grow space-y-4">
                 <h4 className="text-xl text-[#2C3B2E] font-medium tracking-wide">The Kaizeñ Cafe</h4>
@@ -207,16 +209,18 @@ export default function HomeView({ setCurrentPage }: HomeViewProps) {
             {SPONSORS.map((sponsor) => (
               <div
                 key={sponsor.name}
-                className="group flex flex-col p-6 bg-[#F0EAD6] border border-[#B08D57]/20 hover:border-[#6B4A34] transition-all duration-300"
+                className="group relative flex flex-col p-6 bg-[#F0EAD6] border border-[#B08D57]/20 hover:border-[#6B4A34] hover:-translate-y-3 hover:shadow-[0_20px_42px_rgba(43,36,22,0.16)] hover:bg-[#F7F0E3] transition-all duration-400 overflow-hidden"
               >
+                <div className="absolute inset-0 bg-gradient-to-br from-[#B08D57]/10 via-transparent to-[#6B4A34]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
+                <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#B08D57]/0 via-[#B08D57]/80 to-[#B08D57]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-400"></div>
                 {/* Fixed Size Plaque For Monochrome Logo */}
-                <div className="h-16 w-full flex items-center justify-center border-b border-[#B08D57]/15 pb-4 mb-4">
-                  <span className="text-base tracking-[0.25em] font-bold text-[#2C3B2E] opacity-75 group-hover:opacity-100 group-hover:text-[#6B4A34] transition-all font-serif">
+                <div className="relative h-16 w-full flex items-center justify-center border-b border-[#B08D57]/15 pb-4 mb-4">
+                  <span className="text-base tracking-[0.25em] font-bold text-[#2C3B2E] opacity-75 group-hover:opacity-100 group-hover:text-[#6B4A34] group-hover:tracking-[0.35em] group-hover:scale-105 transition-all duration-400 font-serif">
                     {sponsor.logoText}
                   </span>
                 </div>
                 {/* One line description */}
-                <p className="text-center text-xs font-serif text-[#22201D]/70 group-hover:text-[#22201D] transition-colors leading-relaxed">
+                <p className="relative text-center text-xs font-serif text-[#22201D]/70 group-hover:text-[#22201D] transition-colors duration-400 leading-relaxed">
                   {sponsor.description}
                 </p>
               </div>
@@ -238,41 +242,45 @@ export default function HomeView({ setCurrentPage }: HomeViewProps) {
             <div className="h-px w-16 bg-[#B08D57]/30 mx-auto"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {REVIEWS.map((review) => (
-              <div
-                key={review.id}
-                className="bg-[#F0EAD6] border border-[#B08D57]/20 p-8 flex flex-col justify-between shadow-sm relative"
-              >
-                {/* Elegant Quotation Mark */}
-                <span className="text-[#B08D57]/20 text-6xl font-serif absolute top-4 left-4 select-none leading-none">
-                  “
-                </span>
-                
-                <div className="relative z-10 space-y-6 flex-grow flex flex-col justify-between">
-                  <p className="text-sm italic leading-relaxed text-[#22201D]/85 font-serif pt-4">
-                    {review.quote}
-                  </p>
+          <div className="relative overflow-hidden rounded-[2px] border border-[#B08D57]/20 bg-[#EDE2C7]/70 py-4 md:py-6">
+            <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#ECE5D0] to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#ECE5D0] to-transparent z-10 pointer-events-none"></div>
 
-                  <div className="flex items-center space-x-4 pt-4 border-t border-[#B08D57]/15">
-                    <img
-                      src={review.avatar}
-                      alt={review.name}
-                      className="w-10 h-10 rounded-full object-cover border border-[#B08D57]/20 grayscale"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div>
-                      <h5 className="text-xs font-semibold text-[#2C3B2E] tracking-wide font-serif">
-                        {review.name}
-                      </h5>
-                      <p className="text-[10px] text-[#6B4A34] tracking-wider uppercase">
-                        {review.role}
-                      </p>
+            <div className="review-marquee-track flex w-max gap-4 md:gap-5">
+              {marqueeReviews.map((review, index) => (
+                <div
+                  key={`${review.id}-${index}`}
+                  className="w-[280px] sm:w-[320px] md:w-[340px] flex-shrink-0 bg-[#F0EAD6] border border-[#B08D57]/20 p-6 md:p-7 shadow-[0_8px_24px_rgba(43,36,22,0.06)] relative"
+                >
+                  <span className="text-[#B08D57]/20 text-5xl font-serif absolute top-3 left-3 select-none leading-none">
+                    “
+                  </span>
+
+                  <div className="relative z-10 space-y-5 flex-grow flex flex-col justify-between">
+                    <p className="text-sm italic leading-relaxed text-[#22201D]/80 font-serif pt-3">
+                      {review.quote}
+                    </p>
+
+                    <div className="flex items-center space-x-3 pt-3 border-t border-[#B08D57]/15">
+                      <img
+                        src={review.avatar}
+                        alt={review.name}
+                        className="w-9 h-9 rounded-full object-cover border border-[#B08D57]/20 grayscale"
+                        referrerPolicy="no-referrer"
+                      />
+                      <div>
+                        <h5 className="text-[11px] font-semibold text-[#2C3B2E] tracking-wide font-serif">
+                          {review.name}
+                        </h5>
+                        <p className="text-[9px] text-[#6B4A34] tracking-[0.2em] uppercase">
+                          {review.role}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>

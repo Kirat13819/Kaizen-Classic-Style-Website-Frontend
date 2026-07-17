@@ -143,6 +143,30 @@ export const REVIEWS: Review[] = [
     quote: 'The multi-purpose turf is easily the finest in the city. The grass feel, the light distribution, and the quiet environment. Followed by the club\'s signature roast coffee—there is truly nothing like it.',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=120&h=120',
     rating: 5
+  },
+  {
+    id: '4',
+    name: 'Neha Kapoor',
+    role: 'Weekend Guest',
+    quote: 'There is a calm elegance to everything here. From the court lighting to the service in the cafe, each detail feels quietly luxurious.',
+    avatar: 'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&q=80&w=120&h=120',
+    rating: 5
+  },
+  {
+    id: '5',
+    name: 'Rohan D’Souza',
+    role: 'Regular Player',
+    quote: 'The club feels like a private retreat in the middle of the city. The atmosphere is refined, but never stiff, which is rare.',
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=120&h=120',
+    rating: 5
+  },
+  {
+    id: '6',
+    name: 'Meera Iyer',
+    role: 'Social Member',
+    quote: 'I come for the courts, stay for the conversations, and leave feeling like I have stepped into a better version of the day.',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=120&h=120',
+    rating: 5
   }
 ];
 
